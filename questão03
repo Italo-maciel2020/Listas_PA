@@ -1,0 +1,15 @@
+p = i;
+/// Não é válido, um ponteiro para inteiro não pode receber valores, apenas endereços onde estão armazenados inteiros
+q = &j;
+/// É válido, o ponteiro para inteiro q está recebendo o endereço de j
+p = &*&i;
+
+i = (*&)j;
+
+i = *&j;
+
+i = *&*&j;
+
+q = *p;
+///
+i = (*p)++ + *q;
