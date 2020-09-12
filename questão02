@@ -7,6 +7,11 @@ int main()
     int i=5, *p;
     p = &i;
     printf("%x, %d, %d, %d, %d", p,*p+2,**&p,3**p,**&p+4);
-    /// este programa retorna: 61fecc, 7, 5, 15, 9
+    /// Este programa retorna: 61fecc, 7, 5, 15, 9
+    /// O primeiro retorna o endereço de memória onde foi armazenado a variável i
+    /// O segundo adiciona 2 ao lugar pra onde aponta o ponteiro para inteiro p, que está apontando para onde foi armazenado i, por isso retorna 7 (5+2)
+    /// O terceiro mostra o conteúdo da variável pra onde aponta o ponteiro p
+    /// O quarto multiplica o conteúdo de p 3 vezes, por isso retorna 15 (3x5)
+    /// O quinto soma 4 ao conteúdo para onde aponta o ponteiro p, ou seja, o valor de i somado a 5, que resulta 9 (5+4)
     return 0;
 }
