@@ -1,0 +1,14 @@
+int i=3,j=5;
+int *p, *q;
+p = &i;
+q = &j;
+
+p == &i;
+*p - *q;
+/// Conteúdo do endereço pra onde aponta p menos o conteúdo pra onde aponta q, resulta em -2
+**&p;
+
+3 - *p/(*q) + 7;
+/* Divisão tem precedência, logo expressa: três menos o resultado da divisão 
+* do conteúdo do endereço para onde aponta p pelo conteúdo do endereço para
+* onde aponta q mais 7, resulta em 10
