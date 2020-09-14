@@ -1,0 +1,18 @@
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+    printf("%d ",*(vet+i));
+  }
+}
+/// Este trecho de código imprime o conteúdo do vetor vet[]
+
+
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+  printf("%X ",vet+i);
+  }
+}
+/// Este trecho de código imprime os endereços onde estão armazenados os valores do vetor vet[]
