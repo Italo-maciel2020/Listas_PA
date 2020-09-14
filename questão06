@@ -1,0 +1,8 @@
+*(pulo + 2);
+/// Esta expressão referencia o valor do terceiro elemento do vetor
+*(pulo + 4);
+/// Esta expressão referencia o valor do quinto elemento do vetor
+pulo + 4;
+/// Esta expressão retorna o endereço do quinto elemento do vetor
+pulo + 2;
+/// Esta expressão retorna o endereço do terceiro elemento do vetor
