@@ -11,5 +11,6 @@ i = *&j;
 i = *&*&j;
 
 q = *p;
-///
+/// Não é válido pois o ponteiro para inteiro q está recebendo o conteúdo do endereço para onde aponta p
 i = (*p)++ + *q;
+/// É válido, espressa: conteúdo de p incrementado de 1 mais o conteúdo de q, resulta em um valor inteiro
