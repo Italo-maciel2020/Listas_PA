@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main(void){
+int mat[4], *p, x;
+x = *mat;
+printf("%d\n",x);
+p = (*mat)+ 1;
+printf("%d\n",p);
+}
+
+/*Nessa questão o conteúdo aleatório do vetor mat na posição atual 
+ * é recebido pela variável x,e é incrementada mais 1 na 
+ * linha 7 em que o ponteiro recebe*/
