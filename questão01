@@ -4,9 +4,19 @@ p = &i;
 q = &j;
 
 p == &i;
+/// Nessa situação ao imprimir o resultado, retornará igual a 1 referente a verdadeiro,
+  pois na 3ª linha o ponteiro p recebe o endereço de i a partir do e-commercial (&), logo
+  a afirmação acima retorna verdadeiro.
+  
+
 *p - *q;
-/// Conteúdo do endereço pra onde aponta p menos o conteúdo pra onde aponta q, resulta em -2
+/// Conteúdo do endereço pra onde aponta p menos o conteúdo pra onde aponta q, resulta em -2.
+
 **&p;
+/*O e-commercial (&) indica o endereço do ponteiro na memória
+enquanto o primeiro asterístico (*) refere-se ao ponteiro p,
+e o segundo asterístico (*) refere-se o conteúdo guardado 
+na 3ª linha.*/
 
 3 - *p/(*q) + 7;
 /* Divisão tem precedência, logo expressa: três menos o resultado da divisão 
