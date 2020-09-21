@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int compCrescente(const void * a, const void * b);
+
+int main(){
+    int n; // dimensão do vetor
+    float *vetor; // ponteiro para float - vetor
+
+    printf("Insira a quantidade de numeros do seu vetor: ");
+    scanf("%d\n ", &n); // recebe do usuário a dimensão do vetor
+
+    vetor = malloc(n*sizeof(float)); // aloca memória do vetor
+
+    printf("Insira os valores: ");
+    for(int i = 0; i<n; i++){
+        scanf("%f", &vetor[i]); // recebe os valores do usuário
+    }
+
+    printf("Aqui esta seu vetor ordenado de forma crescente: ");
+
+    /*
+    *qsort(void* vetor, size_t dimVetor, size_t tamTipoVetor, int(funcaoComparacao (const void*, const void*))
+    */
+
+    qsort(vetor, n, sizeof(float), compCrescente); // faz a chamada da função qsort
+    for(int i = 0; i<n; i++){
+        printf("%f\n ", vetor[i]); // imprime o vetor ordenado
+    }
+
+    free(vetor); // libera memória alocada para o vetor
+
+    return(0);
+}
+
+int compCrescente(const void * a, const void * b){
+    if(*(int*)a == *(int*)b){
+        return 0;
+    }
+    else{
+        if(*(int*)a < *(int*)b){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+}
