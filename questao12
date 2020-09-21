@@ -1,0 +1,21 @@
+Ponteiros para funções podem ser passados como argumentos para outras funções, e a função apontada pode ser invocada a partir de seu ponteiro. Podemos então fazer coisas como,
+por exemplo, passar uma função como argumento para outrafunção. 
+
+# Cógigo exemplo
+
+#include <stdio.h>
+#include <string.h>
+
+void FuncaoImprime (char *str, int (*func)(const char *));
+
+int main(){
+    char String [] = "DCA 1202 - Programacao Avancada";
+    int (*p)(const char *);
+    p=puts;
+    FuncaoImprime (String, p);
+    return 0;
+}
+void FuncaoImprime (char *str, int (*func)(const char *)){
+    (*func)(str);
+    func(str);
+}
