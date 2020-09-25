@@ -2,23 +2,23 @@
 #include <string.h>
 #include <stdlib.h>
 
-int compCrescente(const void * a, const void * b);
+int compCrescente(const void * a, const void * b); // função que será chamada para comparação dentro da qsort()
 
 int main(){
     int n; // dimensão do vetor
     float *vetor; // ponteiro para float - vetor
 
-    printf("Insira a quantidade de numeros do seu vetor: ");
-    scanf("%d\n ", &n); // recebe do usuário a dimensão do vetor
+    printf("Insira a quantidade de numeros do seu vetor: \n");
+    scanf("%d", &n); // recebe do usuário a dimensão do vetor
 
     vetor = malloc(n*sizeof(float)); // aloca memória do vetor
 
-    printf("Insira os valores: ");
+    printf("Insira os valores: \n");
     for(int i = 0; i<n; i++){
         scanf("%f", &vetor[i]); // recebe os valores do usuário
     }
 
-    printf("Aqui esta seu vetor ordenado de forma crescente: ");
+    printf("Aqui esta seu vetor ordenado de forma crescente: \n");
 
     /*
     *qsort(void* vetor, size_t dimVetor, size_t tamTipoVetor, int(funcaoComparacao (const void*, const void*))
@@ -26,7 +26,7 @@ int main(){
 
     qsort(vetor, n, sizeof(float), compCrescente); // faz a chamada da função qsort
     for(int i = 0; i<n; i++){
-        printf("%f\n ", vetor[i]); // imprime o vetor ordenado
+        printf("%f\n", vetor[i]); // imprime o vetor ordenado
     }
 
     free(vetor); // libera memória alocada para o vetor
