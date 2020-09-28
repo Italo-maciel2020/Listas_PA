@@ -1,33 +1,42 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-void completa_vetor(int *v,int n){
-    v = malloc(n * sizeof(int));
-    printf("Insira os elementos do vetor.");
-    for(int i=0;i<n;i++){
-        scanf("%d", &v[i]);
-    }
-    free(v);
-}
-
-void soma_vetores(int *v1,int *v2,int *v3,int n){
-    v3 = malloc(n * sizeof(int));
-    for(int i=0;i<n;i++){
-        v3[i] = v1[i] + v2[i];
-    }
-}
+void soma_vetores(int *v1,int *v2,int *v3,int n);
 
 int main()
 {
-    int *v1,*v2;
-    int n;
-    printf("Insira o tamanho dos vetores.");
+    int *v1, *v2, *v3, n;
+
+    printf("Insira o tamanho dos vetores: \n");
     scanf("%d",&n);
-    completa_vetor(v1,n);
-    completa_vetor(v2,n);
-    soma_vetores(v1,v2,v3,n);
-    for(int i=0;i<n;i++){
-        printf("%d", v3[i]);
+
+    v1 = malloc(n * sizeof(int));
+    v2 = malloc(n * sizeof(int));
+
+    printf("Insira os elementos do primeiro vetor: \n");
+    for(int i=0; i<n ;i++){
+        scanf("%d", &v2[i]);
     }
+
+    printf("Insira os elementos do segundo vetor: \n");
+    for(int i=0;i<n;i++){
+        scanf("%d", &v1[i]);
+    }
+
+    soma_vetores(v1, v2, v3,n);
+
+    free(v2);
+    free(v1);
     return 0;
+}
+
+void soma_vetores(int *v1, int *v2, int *v3, int n){
+    v3 = malloc(n * sizeof(int));
+    for(int i=0; i<n; i++){
+        v3[i] = v1[i] + v2[i];
+    }
+    for(int i=0; i<n; i++){
+        printf("%d ", v3[i]);
+    }
 }
