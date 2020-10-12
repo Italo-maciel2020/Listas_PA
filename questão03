@@ -1,16 +1,26 @@
+Exemplo de código usado:
+#include <stdio.h>
+
+int main()
+{
+   int i=3,j=6,*p,*q;
+   i=*&*&j;
+   printf("%d \n",i);
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 p = i;
-/// Não é válido, um ponteiro para inteiro não pode receber valores, apenas endereços onde estão armazenados inteiros
+/// Não é válido, um ponteiro para inteiro não pode receber valores, apenas endereços onde estão armazenados inteiros.
 q = &j;
-/// É válido, o ponteiro para inteiro q está recebendo o endereço de j
+/// É válido, o ponteiro para inteiro q está recebendo o endereço de j.
 p = &*&i;
-
+/// É válido, pois o ponteiro para inteiro está recebendo o endereço do conteúdo de i. Essa expressão pode ser reduzida para p=&i, que resultará na mesma coisa.
 i = (*&)j;
-
+/// Não é válido, pois o parênteses que dá a prevalência das operações não pode ser usado.
 i = *&j;
-
+/// Válido, a variávei inteira receberá o endereço e conteúdo de j, logo passará a ter o mesmo valor de j.
 i = *&*&j;
-
+/// Válido, mesma operação da questão acima.
 q = *p;
-/// Não é válido pois o ponteiro para inteiro q está recebendo o conteúdo do endereço para onde aponta p
+/// Não é válido pois o ponteiro para inteiro q está recebendo o conteúdo do endereço para onde aponta p.
 i = (*p)++ + *q;
-/// É válido, espressa: conteúdo de p incrementado de 1 mais o conteúdo de q, resulta em um valor inteiro
+/// É válido, espressa: conteúdo de p incrementado de 1 mais o conteúdo de q, resulta em um valor inteiro.
