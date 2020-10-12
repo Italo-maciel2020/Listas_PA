@@ -1,3 +1,5 @@
+Calculo do tempo de execução da questão 14;
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -59,3 +61,63 @@ int compCrescente(const void * a, const void * b){
     }
 }
  
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Cálculo do tempo de execução da questão 15
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h> // Chamada da biblioteca de calcular tempo de execução
+
+int compCrescente(const void * a, const void * b); // função que será chamada para comparação dentro da qsort()
+
+int main(){
+    int n; // dimensão do vetor
+    float *vetor; // ponteiro para float - vetor
+    float tempo;
+    time_t t_inicial,t_final;
+
+    t_inicial = time(NULL); // O tempo inicial recebe tempo zero(vazio).
+
+    printf("Insira a quantidade de numeros do seu vetor: \n");
+    scanf("%d", &n); // recebe do usuário a dimensão do vetor
+
+    vetor = malloc(n*sizeof(float)); // aloca memória do vetor
+
+    printf("Insira os valores: \n");
+    for(int i = 0; i<n; i++){
+        scanf("%f", &vetor[i]); // recebe os valores do usuário
+    }
+
+    printf("Aqui esta seu vetor ordenado de forma crescente: \n");
+
+    ordenar_valores(vetor,n);
+
+    t_final = time(NULL);
+
+    tempo = difftime(t_final,t_inicial); // Calcula o tempo total de execução, a partir da função diferença entre os tempos final e inicial.
+
+    printf("Tempo total: %f\n",tempo);
+
+    free(vetor); // libera memória alocada para o vetor
+
+    return(0);
+}
+
+void ordenar_valores(float *vetor, int n){
+    for(int i=n-1;i>=0;i--){
+        for(int j=0;j<n;j++){
+            if(vetor[i]<vetor[j]){
+                vetor[j] = vetor[i];
+            }
+        }
+    }
+    for(int i = 0; i<n; i++){
+        printf("%f\n", vetor[i]); // imprime o vetor ordenado
+    }
+
+}
+
+/// A questão 15 está apresentando um erro na ordenação, o elemento menor do vetor está repetindo em todas as execuções. Logo o tempo de execução está sendo menor do que 
+o uso da questão 14 que usa ponteiro para função pela função qsort().
+
