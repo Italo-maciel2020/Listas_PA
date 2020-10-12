@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h> // Chamada da biblioteca de calcular tempo de execução
+
+int compCrescente(const void * a, const void * b); // função que será chamada para comparação dentro da qsort()
+
+int main(){
+    int n; // dimensão do vetor
+    float *vetor; // ponteiro para float - vetor
+    float tempo;
+    time_t t_inicial,t_final;
+
+    t_inicial = time(NULL); // O tempo inicial recebe tempo zero(vazio).
+
+    printf("Insira a quantidade de numeros do seu vetor: \n");
+    scanf("%d", &n); // recebe do usuário a dimensão do vetor
+
+    vetor = malloc(n*sizeof(float)); // aloca memória do vetor
+
+    printf("Insira os valores: \n");
+    for(int i = 0; i<n; i++){
+        scanf("%f", &vetor[i]); // recebe os valores do usuário
+    }
+
+    printf("Aqui esta seu vetor ordenado de forma crescente: \n");
+
+    /*
+    *qsort(void* vetor, size_t dimVetor, size_t tamTipoVetor, int(funcaoComparacao (const void*, const void*))
+    */
+
+    qsort(vetor, n, sizeof(float), compCrescente); // faz a chamada da função qsort
+    for(int i = 0; i<n; i++){
+        printf("%f\n", vetor[i]); // imprime o vetor ordenado
+    }
+
+    t_final = time(NULL);
+
+    tempo = difftime(t_final,t_inicial); // Calcula o tempo total de execução, a partir da função diferença entre os tempos final e inicial.
+
+    printf("Tempo total: %f\n",tempo);
+
+    free(vetor); // libera memória alocada para o vetor
+
+    return(0);
+}
+
+int compCrescente(const void * a, const void * b){
+    if(*(int*)a == *(int*)b){
+        return 0;
+    }
+    else{
+        if(*(int*)a < *(int*)b){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+}
+ 
