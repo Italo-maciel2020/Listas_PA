@@ -9,31 +9,20 @@ void completa_matrizes(int **m,int n,int c){
     }
 }
 
-void multiplica_matrizes(int **m1,int **m2,int **m3,int nl1,int nc1,int nc2){
-    for(int i=0;i<nl1;i++){
-       for(int j=0;j<nc1;j++){
-           for(int k=0;k<nc2;k++){
-               m3[i][j]= m3[i][j] + m1[i][k] * m2[k][j];
+void multiplica_matrizes(int **ma,int **mb,int **mc,int n1,int c1,int c2){
+    for(int i=0;i<n1;i++){
+       for(int j=0;j<c2;j++){
+           for(int k=0;k<c1;k++){
+               mc[i][j]= mc[i][j] + ma[i][k] * mb[k][j];
            }
        }
            }
     printf("Elementos da matriz C: \n");
-    for(int i=0;i<nl1;i++){
-        for(int j=0;j<nc2;j++){
-            printf("%d",m3[i][j]);
+    for(int i=0;i<n1;i++){
+        for(int j=0;j<c2;j++){
+            printf("%d ",mc[i][j]);
         }
-    }
-    printf("Elementos da matriz A: \n");
-    for(int i=0;i<nl1;i++){
-        for(int j=0;j<nc1;j++){
-            printf("%d",m1[i][j]);
-        }
-    }
-    printf("Elementos da matriz B: \n");
-    for(int i=0;i<nc1;i++){
-        for(int j=0;j<nc2;j++){
-            printf("%d",m2[i][j]);
-        }
+        printf("\n");
     }
 }
 
@@ -55,6 +44,21 @@ int main(void){
     completa_matrizes(m1,nl1,nc2);
     printf("Insira os elementos da matriz B:\n ");
     completa_matrizes(m2,nl2,nc2);
+
+    printf("Elementos da matriz A: \n");
+    for(int i=0;i<nl1;i++){
+        for(int j=0;j<nc1;j++){
+            printf("%d ",m1[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Elementos da matriz B: \n");
+    for(int i=0;i<nl2;i++){
+        for(int j=0;j<nc2;j++){
+            printf("%d ",m2[i][j]);
+        }
+        printf("\n");
+    }
 
     m3 = malloc(nl1*sizeof(int *));
     m3[0] = malloc(nc2*sizeof(int));
