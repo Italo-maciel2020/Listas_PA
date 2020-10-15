@@ -43,7 +43,7 @@ int main(void){
 
     printf("Insira a quantidade de linhas e colunas da Matriz A: ");
     scanf("%d %d",&nl1,&nc1);
-    printf("Insira a quantidade de linhas e colunas da Matriz B ");
+    printf("Insira a quantidade de linhas e colunas da Matriz B: ");
     scanf("%d %d",&nl2,&nc2);
 
     m1 = malloc(nl1*sizeof(int *));
@@ -51,7 +51,9 @@ int main(void){
     m2 = malloc(nl2*sizeof(int *));
     m2[0] = malloc(nc2*sizeof(int));
 
+    printf("Insira os elementos da matriz A:\n ");
     completa_matrizes(m1,nl1,nc2);
+    printf("Insira os elementos da matriz B:\n ");
     completa_matrizes(m2,nl2,nc2);
 
     m3 = malloc(nl1*sizeof(int *));
