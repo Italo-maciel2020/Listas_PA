@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void completa_matrizes(int **m,int n,int c){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<c;j++){
+            scanf("%d",&m[i][j]);
+        }
+    }
+}
+
+void multiplica_matrizes(int **m1,int **m2,int **m3,int nl1,int nc1,int nc2){
+    for(int i=0;i<nl1;i++){
+       for(int j=0;j<nc1;j++){
+           for(int k=0;k<nc2;k++){
+               m3[i][j]= m3[i][j] + m1[i][k] * m2[k][j];
+           }
+       }
+           }
+    printf("Elementos da matriz C: \n");
+    for(int i=0;i<nl1;i++){
+        for(int j=0;j<nc2;j++){
+            printf("%d",m3[i][j]);
+        }
+    }
+    printf("Elementos da matriz A: \n");
+    for(int i=0;i<nl1;i++){
+        for(int j=0;j<nc1;j++){
+            printf("%d",m1[i][j]);
+        }
+    }
+    printf("Elementos da matriz B: \n");
+    for(int i=0;i<nc1;i++){
+        for(int j=0;j<nc2;j++){
+            printf("%d",m2[i][j]);
+        }
+    }
+}
+
+int main(void){
+    int nl1,nc1,nl2,nc2;
+    int **m1,**m2,**m3;
+
+    printf("Insira a quantidade de linhas e colunas da Matriz A: ");
+    scanf("%d %d",&nl1,&nc1);
+    printf("Insira a quantidade de linhas e colunas da Matriz B ");
+    scanf("%d %d",&nl2,&nc2);
+
+    m1 = malloc(nl1*sizeof(int *));
+    m1[0] = malloc(nc1*sizeof(int));
+    m2 = malloc(nl2*sizeof(int *));
+    m2[0] = malloc(nc2*sizeof(int));
+
+    completa_matrizes(m1,nl1,nc2);
+    completa_matrizes(m2,nl2,nc2);
+
+    m3 = malloc(nl1*sizeof(int *));
+    m3[0] = malloc(nc2*sizeof(int));
+
+    multiplica_matrizes(m1,m2,m3,nl1,nc1,nc2);
+
+    return 0;
+}
