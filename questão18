@@ -1,69 +1,96 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void completa_matrizes(int **m,int n,int c){
-    for(int i=0;i<n;i++){
-        for(int j=0;j<c;j++){
-            scanf("%d",&m[i][j]);
-        }
-    }
-}
-
-void multiplica_matrizes(int **ma,int **mb,int **mc,int n1,int c1,int c2){
-    for(int i=0;i<n1;i++){
-       for(int j=0;j<c2;j++){
-           for(int k=0;k<c1;k++){
-               mc[i][j]= mc[i][j] + ma[i][k] * mb[k][j];
-           }
-       }
-           }
-    printf("Elementos da matriz C: \n");
-    for(int i=0;i<n1;i++){
-        for(int j=0;j<c2;j++){
-            printf("%d ",mc[i][j]);
-        }
-        printf("\n");
-    }
-}
+void completa_matrizes(int **m,int l,int c);
+void multiplica_matrizes(int **ma,int **mb,int **mc,int n1,int c1,int c2);
+void imprime_matriz(int **m,int l,int c);
 
 int main(void){
     int nl1,nc1,nl2,nc2;
     int **m1,**m2,**m3;
 
-    printf("Insira a quantidade de linhas e colunas da Matriz A: ");
-    scanf("%d %d",&nl1,&nc1);
-    printf("Insira a quantidade de linhas e colunas da Matriz B: ");
-    scanf("%d %d",&nl2,&nc2);
+    printf("Insira a quantidade de linhas da primeira Matriz: ");
+    scanf("%d",&nl1);
+    printf("Insira a quantidade de colunas da primeira Matriz: ");
+    scanf("%d",&nc1);
+    printf("Insira a quantidade de linhas da segunda Matriz: ");
+    scanf("%d",&nl2);
+    printf("Insira a quantidade de colunas da segunda Matriz: ");
+    scanf("%d",&nc2);
+    if(nc1 != nl2){
+        printf("A multiplicacao sera invalida pois o numero de colunas da primeira matriz eh diferente do número de linhas da segunda matriz.");
+        printf("\n");
+        printf("Insira numeros condizentes:");
+        printf("\n");
+        printf("Insira a quantidade de linhas da primeira Matriz: ");
+        scanf("%d",&nl1);
+        printf("Insira a quantidade de colunas da primeira Matriz: ");
+        scanf("%d",&nc1);
+        printf("Insira a quantidade de linhas da segunda Matriz: ");
+        scanf("%d",&nl2);
+        printf("Insira a quantidade de colunas da segunda Matriz: ");
+        scanf("%d",&nc2);
+    }
 
-    m1 = malloc(nl1*sizeof(int *));
+    m1 = malloc(nl1*sizeof(int*));
     m1[0] = malloc(nc1*sizeof(int));
-    m2 = malloc(nl2*sizeof(int *));
+    m2 = malloc(nl2*sizeof(int*));
     m2[0] = malloc(nc2*sizeof(int));
-
-    printf("Insira os elementos da matriz A:\n ");
-    completa_matrizes(m1,nl1,nc2);
-    printf("Insira os elementos da matriz B:\n ");
-    completa_matrizes(m2,nl2,nc2);
-
-    printf("Elementos da matriz A: \n");
-    for(int i=0;i<nl1;i++){
-        for(int j=0;j<nc1;j++){
-            printf("%d ",m1[i][j]);
-        }
-        printf("\n");
-    }
-    printf("Elementos da matriz B: \n");
-    for(int i=0;i<nl2;i++){
-        for(int j=0;j<nc2;j++){
-            printf("%d ",m2[i][j]);
-        }
-        printf("\n");
-    }
-
     m3 = malloc(nl1*sizeof(int *));
     m3[0] = malloc(nc2*sizeof(int));
 
+    printf("Insira os elementos da primeira matriz:\n");
+    completa_matrizes(m1, nl1, nc1);
+    printf("Insira os elementos da segunda matriz:\n");
+    completa_matrizes(m2, nl2, nc2);
+
+    printf("Elementos da primeira matriz: \n");
+    imprime_matriz(m1, nl1, nc1);
+
+    printf("Elementos da segunda matriz: \n");
+    imprime_matriz(m2, nl2, nc2);
+
     multiplica_matrizes(m1,m2,m3,nl1,nc1,nc2);
+    printf("Elementos da matriz de multiplicacao: \n");
+    imprime_matriz(m3, nl1, nc2);
+
+    free(m1[0]);
+    free(m1);
+    free(m2[0]);
+    free(m2);
+    free(m3[0]);
+    free(m3);
 
     return 0;
+}
+
+void completa_matrizes(int **m,int l,int c){
+    for(int i=0;i<l;i++){
+        for(int j=0;j<c;j++){
+            scanf("%d", &m[i][j]);
+        }
+    }
+}
+
+void multiplica_matrizes(int **ma,int **mb,int **mc,int n1,int c1,int c2){
+    int aux = 0;
+    for(int i=0;i<n1;i++){
+       for(int j=0;j<c2;j++){
+           ma[i][j] = 0;
+           for(int n=0;n<c1;n++){
+               aux+= ma[i][n] * mb[n][j];
+           }
+           mc[i][j] = aux;
+           aux = 0;
+       }
+    }
+}
+
+void imprime_matriz(int **m,int l,int c){
+    for(int i=0;i<l;i++){
+        for(int j=0;j<c;j++){
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
 }
